@@ -265,7 +265,7 @@ export class OAuth2Client {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
 
-    if (body.grant_type !== 'authorization_code' && this.settings.clientSecret) {
+    if (body.grant_type === 'authorization_code' && this.settings.clientSecret) {
       const basicAuthStr = btoa(this.settings.clientId + ':' + this.settings.clientSecret);
       headers.Authorization = 'Basic ' + basicAuthStr;
     }
